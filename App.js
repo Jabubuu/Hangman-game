@@ -7,6 +7,7 @@ export default function App() {
     <View style={styles.container}>
       <Text>LIIBADAABABABA!</Text>
       <Text>Sami on ihq!</Text>
+      <Text>Push it to the limit!</Text>
       <StatusBar style="auto" />
     </View>
   );
