@@ -8,6 +8,7 @@ export default ({ onPress, text, size }) => {
     return (
         <TouchableOpacity onPress={onPress} style={buttonStyles}>
             <Text style={textStyles}>Nappi</Text>
+            <Text>asdasdasd</Text>
         </TouchableOpacity>
     );
 };
