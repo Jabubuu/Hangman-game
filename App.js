@@ -5,9 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>LIIBADAABABABA!</Text>
-      <Text>Sami on ihq!</Text>
-      <Text>Push it to the limit!</Text>
+      <Text>Meidän projekti!</Text>
       <StatusBar style="auto" />
     </View>
   );
