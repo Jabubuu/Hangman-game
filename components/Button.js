@@ -6,7 +6,7 @@ const buttonWidth = screen.width / 4;
 
 export default ({ onPress, text }) => {
     const buttonStyles = [styles.button];
-    //const textStyles = [styles.text];
+    const textStyles = [styles.text];
 
     return (
         <TouchableOpacity onPress={onPress} style={buttonStyles}>
@@ -18,7 +18,6 @@ export default ({ onPress, text }) => {
 const styles = StyleSheet.create({
     button: {
         backgroundColor: '#333333',
-        flex: 1,
         height: Math.floor(buttonWidth - 10),
         alignItems: 'center',
         justifyContent: 'center',
