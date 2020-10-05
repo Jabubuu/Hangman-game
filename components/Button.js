@@ -4,13 +4,13 @@ import { TouchableOpacity, StyleSheet, Text, Dimensions } from 'react-native';
 const screen = Dimensions.get('window');
 const buttonWidth = screen.width / 4;
 
-export default ({ onPress, text, size }) => {
+export default ({ onPress, text }) => {
     const buttonStyles = [styles.button];
-    const textStyles = [styles.text];
+    //const textStyles = [styles.text];
 
     return (
         <TouchableOpacity onPress={onPress} style={buttonStyles}>
-            <Text style={textStyles}>Nappi</Text>
+            <Text style={textStyles}>{text}</Text>
         </TouchableOpacity>
     );
 };
