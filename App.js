@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.text}>Hangman game</Text>
+      <Text style={styles.title}>Hangman game</Text>
       {content}
     </View>
   );
