@@ -28,17 +28,14 @@ export default function App() {
 
   let content=<StartScreen onStartGame={startGame}/>;
   if (newGame == true){
-    content=<GameScreen stopGame={stopGame} exitGame={onExit}/>;
+    content=<GameScreen stopGame={stopGame} exitGame={onExit} onStartGame={startGame}/>;
   }
   if (shouldGameStop==true){
-    <View style={styles.screen}>
-</View>
     content=<EndScreen newGame={startGame} exitGame={onExit}/>;
   }
   
   return (
     <View style={styles.screen}>
-      <Text style={styles.text}>Hangman game</Text>
       {content}
     </View>
   );
