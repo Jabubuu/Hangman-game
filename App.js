@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import {Text, View } from 'react-native';
 
@@ -19,23 +18,23 @@ export default function App() {
     setNewGame(true);
   }
   
-  const stopGame=(count)=>{
-    setCount(count);
+  const stopGame=()=>{
     setShouldGameStop(true);
+  }
+
+  const onExit=()=>{
+    setShouldGameStop(false);
+    setNewGame(false)
   }
 
   let content=<StartScreen onStartGame={startGame}/>;
   if (newGame == true){
-    content=<GameScreen stopGame={stopGame}/>;
+    content=<GameScreen stopGame={stopGame} exitGame={onExit} onStartGame={startGame}/>;
   }
   if (shouldGameStop==true){
-    <View style={styles.screen}>
-</View>
-    content=<EndScreen newGame={startGame} count={tryCount}/>;
+    content=<EndScreen newGame={startGame} exitGame={onExit}/>;
   }
   
-  
-
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Hangman game</Text>
