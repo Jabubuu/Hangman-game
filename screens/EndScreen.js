@@ -29,4 +29,12 @@ const EndScreen = (props)=>{
     );
 }
 
+import {Text, View } from 'react-native';
+
+import Button from '../components/Button';
+
+const EndScreen = (props) => {
+    //empty
+
+}
 export default EndScreen;
