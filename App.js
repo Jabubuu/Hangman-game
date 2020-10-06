@@ -11,6 +11,7 @@ export default function App() {
   
   const [shouldGameStop, setShouldGameStop]=useState(false);
   const[newGame, setNewGame]=useState(false);
+  const[count, setCount]=useState(0);
   
   const startGame=()=>{
     setShouldGameStop(false);
