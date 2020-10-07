@@ -26,17 +26,15 @@ export default function App() {
 
   const onExit=()=>{
     setShouldGameStop(false);
-    setNewGame(false)
-  }
-
-  const onExitWord=() => {
+    setNewGame(false);
     setAddWordScreen(false);
   }
+
   const startAddWord=()=>{
     setAddWordScreen(true);
   }
 
-  let content=<StartScreen onStartGame={startGame}/>;
+  let content=<StartScreen onStartGame={startGame} onNewWord={startAddWord}/>;
   if (newGame == true){
     content=<GameScreen stopGame={stopGame} exitGame={onExit} onStartGame={startGame}/>;
   }
@@ -44,7 +42,7 @@ export default function App() {
     content=<EndScreen newGame={startGame} exitGame={onExit}/>;
   }
   if (addWordScreen == true) {
-    content=<AddScreen newWord={startAddWord} exitWord={onExitWord} />;
+    content=<AddScreen wordExit={onExit} />;
   }
   
   return (

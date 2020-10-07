@@ -20,13 +20,13 @@ const AddScreen = (props) => {
 
     return (
         <View style={styles.screen}>
-            <Text style={styles.text}>Add your word to the game</Text>
-            <TextInput placeholder="Your word"
+            <Text style={styles.textBlack}>Add your word to the game</Text>
+            <TextInput style={styles.textInput}placeholder="Your word"
             onChangeText={wordInputHandler}/>
 
             <Row>
                 <Button text="Add word" onPress={addWordToList} />
-                <Button text="Main menu" onPress={() => props.exitWord()} />
+                <Button text="Main menu" onPress={() => props.wordExit()} />
             </Row>
         </View>
     );
