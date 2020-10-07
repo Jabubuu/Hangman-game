@@ -25,6 +25,11 @@ const GameScreen = (props)=>{
    const winState=()=>{
     if (compare(Word, secret) == true){
       props.stopGame();
+      WordInit();
+      if(compare(Word,secret) == true){
+        props.stopGame();
+        WordInit();
+      }
     }
   }
 
