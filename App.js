@@ -5,6 +5,7 @@ import styles from './styles/ScreenStyles';
 import StartScreen from './screens/StartScreen';
 import GameScreen from './screens/GameScreen';
 import EndScreen from './screens/EndScreen';
+import AddScreen from './screens/AddScreen';
 
 export default function App() {
   
@@ -12,6 +13,7 @@ export default function App() {
   const [shouldGameStop, setShouldGameStop]=useState(false);
   const[newGame, setNewGame]=useState(false);
   const[count, setCount]=useState(0);
+  const[addWordScreen, setAddWordScreen]=useState(false);
   
   const startGame=()=>{
     setShouldGameStop(false);
@@ -27,12 +29,22 @@ export default function App() {
     setNewGame(false)
   }
 
+  const onExitWord=() => {
+    setAddWordScreen(false);
+  }
+  const startAddWord=()=>{
+    setAddWordScreen(true);
+  }
+
   let content=<StartScreen onStartGame={startGame}/>;
   if (newGame == true){
     content=<GameScreen stopGame={stopGame} exitGame={onExit} onStartGame={startGame}/>;
   }
   if (shouldGameStop==true){
     content=<EndScreen newGame={startGame} exitGame={onExit}/>;
+  }
+  if (addWordScreen == true) {
+    content=<AddScreen newWord={startAddWord} exitWord={onExitWord} />;
   }
   
   return (

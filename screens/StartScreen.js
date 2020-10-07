@@ -25,7 +25,7 @@ return (
             </View>
             <View>
                 <Text style={styles.text}>Add words</Text>
-                <Button text="Add" onPress={() => {addWords();}} />
+                <Button text="Add" onPress={() => props.newWord()} />
             </View>
         </Row>
     </View> 
