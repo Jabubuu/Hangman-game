@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
 
 screen: {
     flex: 1,
-    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -22,30 +21,28 @@ screen: {
       color: 'white',
   },
   container: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  image:{
     height:'100%',
     width:'100%'
+  },
+  image:{
+    height:50,
+    width:50
   },
   Teddy:{
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
-    height:'20%',
-    width:'20%'
+    height:'40%',
+    width:'40%'
   },
   ListEmpty: {
     justifyContent: 'center',
-    flex:1,
     alignItems: 'center',
     height: 50,
     width: 50,
-
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   Alphabet: {
     justifyContent: 'center',

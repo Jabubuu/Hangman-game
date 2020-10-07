@@ -3,14 +3,14 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, Component }from 'react';
 import styles from '../styles/ScreenStyles';
 import { StyleSheet, Text, View, Image, FlatList, Button, TouchableOpacity, ImageBackground, Alert } from 'react-native';
+import{ImgLetters, ImgTeddy} from '../assets/ImageIndex';
 
-var pic = 'A';
 var WordLenght;
 const WordLetters = [];
 const Word=[];
 const LetterList = [];
 const secret = [];
-const secretWord = ['mug', 'carrage', 'board'];
+const secretWord = ['mug', 'garrage', 'board'];
 
 WordInit();
 
@@ -22,7 +22,7 @@ const GameScreen = (props)=>{
   const [trycount , setTrycount] = useState(0);
 
 
-   const winState=()=>{
+  const winState=()=>{
     if (compare(Word, secret) == true){
       props.stopGame();
       WordInit();
@@ -33,17 +33,26 @@ const GameScreen = (props)=>{
     }
   }
 
+  const loseState=()=>{
+    if (wrong == 6){
+      props.stopGame();
+      WordInit();
+    }
+  }
+
   const handleUpdate=(L) =>{ 
+    var testi = 'A';
     console.log(secret);
     if (secret.includes(L)){
       for (let index = 0; index < secret.length; index++) {
         if (secret[index]==L){
-          WordLetters[index] = GetLetter(L);
+          WordLetters[index] = L.charCodeAt(0)-65;
           Word[index] = L;
         }      
       }
       setRight(right + 1);
     }
+
     else{
       setWrong(wrong + 1);
     }
@@ -51,13 +60,14 @@ const GameScreen = (props)=>{
     setTrycount(trycount + 1);
 
     winState();
+    loseState();
   }
 
   
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/Teddy/HangTeddy'+ wrong + '.png')}style={styles.Teddy} resizeMode='cover'/>   
-      <Text>{wrong}</Text>
+      <Image source={ImgTeddy[wrong]}style={styles.Teddy} resizeMode='cover'/>   
+      <Text>{secret}</Text>
       <Text>{right}</Text>
       <StatusBar style="auto" />
       <FlatList
@@ -65,7 +75,7 @@ const GameScreen = (props)=>{
         extraData={trycount}
         renderItem={({item}) => <View style={styles.ListEmpty}>
           <ImageBackground source={require('../assets/walktheline.png')} style={styles.image}resizeMode='cover'>
-              <Text style={styles.Alphabet}>{item}</Text>
+              <Image source={ImgLetters[item]} style={styles.image}resizeMode='cover'/>
           </ImageBackground>         
         </View>}
         numColumns={WordLenght}
@@ -77,7 +87,7 @@ const GameScreen = (props)=>{
           <View style={styles.Alphabet}>
             <TouchableOpacity onPress={()=>{handleUpdate(itemData.item.Alphabet)}} activeOpacity = { .5 }>
               <View>
-                <ImageBackground source={require('../assets/Letters/' + itemData.item.Alphabet + '.png')} style={styles.image}resizeMode='cover'>
+                <ImageBackground source={ImgLetters[itemData.item.id]} style={styles.image}resizeMode='cover'>
                   <Text style={styles.Alphabet}>{itemData.item.Alphabet}</Text>
                 </ImageBackground>
               </View>
@@ -104,13 +114,6 @@ function compare(arr1,arr2){
   return(result)
 }
 
-function GetLetter(letter){
-return(
-  <Image source={require('../assets/Letters/'+ letter +'.png')}
-    style={styles.image} resizeMode='cover'/>
-)
-}
-
 function WordInit(){
   var num = 1;
   var randomnum = Math.floor(Math.random() * secretWord.length)
@@ -125,7 +128,7 @@ function WordInit(){
     WordLetters.push('');   
   }
   for (let index = 0; index < 26; index++) {
-    LetterList.push({pic: GetLetter(String.fromCharCode(num+64)), Alphabet:String.fromCharCode(num+64) });   
+    LetterList.push({id: index, pic: ImgLetters[index], Alphabet:String.fromCharCode(num+64) });   
     num++
   }
 
