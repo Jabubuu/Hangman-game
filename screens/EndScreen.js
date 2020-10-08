@@ -15,7 +15,7 @@ const EndScreen = (props)=>{
         <View>
         <Row>
             <View>
-                <Button text="New game" onPress={() => props.newGame()} />
+                <Button text="New game" onPress={() => props.onStartGame()} />
             </View>
             <View>
                 <Button text="Main menu" onPress={() => props.exitGame()} />

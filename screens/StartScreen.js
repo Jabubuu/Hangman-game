@@ -1,4 +1,3 @@
-
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
@@ -25,11 +24,11 @@ return (
             </View>
             <View>
                 <Text style={styles.text}>Add words</Text>
-                <Button text="Add" onPress={() => {addWords();}} />
+                <Button text="Add Words" onPress={() => props.onNewWord()} />
             </View>
         </Row>
     </View> 
-    
+
 
 );
 

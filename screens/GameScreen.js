@@ -10,9 +10,7 @@ const WordLetters = [];
 const Word=[];
 const LetterList = [];
 const secret = [];
-const secretWord = ['mug', 'garrage', 'board'];
 
-WordInit();
 
 
 const GameScreen = (props)=>{
@@ -21,23 +19,29 @@ const GameScreen = (props)=>{
   const [right , setRight] = useState(0);
   const [trycount , setTrycount] = useState(0);
 
+  const [game , setGame] = useState(true);
+
+
+  if (game == true){
+    WordInit(props.wordList);
+    setGame(false);
+  }
 
   const winState=()=>{
     if (compare(Word, secret) == true){
       props.stopGame();
-      WordInit();
+      setGame(true);
     }
   }
 
   const loseState=()=>{
     if (wrong == 6){
       props.stopGame();
-      WordInit();
+      setGame(true);
     }
   }
 
-  const handleUpdate=(L) =>{ 
-    var testi = 'A';
+  const handleUpdate=(L,index) =>{ 
     console.log(secret);
     if (secret.includes(L)){
       for (let index = 0; index < secret.length; index++) {
@@ -53,6 +57,8 @@ const GameScreen = (props)=>{
       setWrong(wrong + 1);
     }
 
+    LetterList[index].pic = require('../assets/favicon.png');
+
     setTrycount(trycount + 1);
 
     winState();
@@ -67,6 +73,7 @@ const GameScreen = (props)=>{
       <Text>{right}</Text>
       <StatusBar style="auto" />
       <FlatList
+        keyExtractor={(item, index) => index.toString()}  
         data={WordLetters}
         extraData={trycount}
         renderItem={({item}) => <View style={styles.ListEmpty}>
@@ -77,13 +84,14 @@ const GameScreen = (props)=>{
         numColumns={WordLenght}
       />
       <FlatList
+        keyExtractor={(item, index) => index.toString()}
         data={LetterList}
         extraData={trycount}
         renderItem={itemData=>(
           <View style={styles.Alphabet}>
-            <TouchableOpacity onPress={()=>{handleUpdate(itemData.item.Alphabet)}} activeOpacity = { .5 }>
+            <TouchableOpacity onPress={()=>{handleUpdate(itemData.item.Alphabet, itemData.item.id)}} activeOpacity = { .5 }>
               <View>
-                <ImageBackground source={ImgLetters[itemData.item.id]} style={styles.image}resizeMode='cover'>
+                <ImageBackground source={itemData.item.pic} style={styles.image}resizeMode='cover'>
                   <Text style={styles.Alphabet}>{itemData.item.Alphabet}</Text>
                 </ImageBackground>
               </View>
@@ -97,9 +105,8 @@ const GameScreen = (props)=>{
   
 }
 
-export default GameScreen;
-
 function compare(arr1,arr2){
+
   var result = true;
   for (let index = 0; index < arr2.length; index++) {
     if (arr1[index] != secret[index]){
@@ -110,10 +117,13 @@ function compare(arr1,arr2){
   return(result)
 }
 
-function WordInit(){
+function WordInit(arr){
+
   var num = 1;
-  var randomnum = Math.floor(Math.random() * secretWord.length)
-  WordLenght = secretWord[randomnum].length;
+  var randomnum = Math.floor(Math.random() * arr.length)
+  WordLenght = arr[randomnum].word.length;
+
+  console.log(arr[randomnum].word);
 
   WordLetters.splice(0,WordLetters.length);
   LetterList.splice(0,LetterList.length);
@@ -129,8 +139,10 @@ function WordInit(){
   }
 
 
-  for (let index = 0; index < secretWord[randomnum].length; index++) {
-    secret.push(secretWord[randomnum].slice(index, index+1).toUpperCase());  
+  for (let index = 0; index < arr[randomnum].word.length; index++) {
+    secret.push(arr[randomnum].word.slice(index, index+1).toUpperCase());  
   }
 
-}
+} 
+
+export default GameScreen;
