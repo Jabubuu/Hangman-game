@@ -57,7 +57,7 @@ const GameScreen = (props)=>{
       setWrong(wrong + 1);
     }
 
-    LetterList[index].pic = require('../assets/favicon.png');
+    LetterList[index].pic = require('../assets/Wrong.png');
 
     setTrycount(trycount + 1);
 
