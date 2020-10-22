@@ -19,6 +19,8 @@ export default function App() {
   const[winScreen, setWinScreen]=useState(false)
   const[words, setWords]=useState([]);
 
+  const[Arvaus, setArvaus]=useState('');
+
   if(words.length == 0 || words == null) {
     getData();
   }
@@ -35,8 +37,9 @@ export default function App() {
     setWinScreen(false);
   }
   
-  const stopGame=()=>{
+  const stopGame=(secret)=>{
     setShouldGameStop(true);
+    setArvaus(secret);
   }
 
   const winGame=()=>{
@@ -61,7 +64,7 @@ export default function App() {
     content=<GameScreen stopGame={stopGame} winGame={winGame} wordList={words}/>;
   }
   if (shouldGameStop==true){
-    content=<EndScreen newGame={startGame} exitGame={onExit}/>;
+    content=<EndScreen newGame={startGame} exitGame={onExit} SecretWord={Arvaus}/>;
   }
   if (addWordScreen == true) {
     content=<AddScreen wordExit={onExit} />;

@@ -36,7 +36,7 @@ const GameScreen = (props)=>{
 
   const loseState=()=>{
     if (wrong == 6){
-      props.stopGame();
+      props.stopGame(secret);
       setGame(true);
     }
   }

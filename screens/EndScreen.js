@@ -14,6 +14,7 @@ const EndScreen = (props)=>{
         <View style={styles.container}>
         <Image source={ImgTeddy[6]}style={styles.Teddy} resizeMode='cover'/>   
         <Text style={styles.textBlack}>Game Over</Text>
+        <Text style={styles.textBlack}> Correct word was: {props.SecretWord}</Text>
         <View>
         <Row>
             <View>
