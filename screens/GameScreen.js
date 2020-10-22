@@ -80,7 +80,7 @@ const GameScreen = (props)=>{
               <Image source={ImgLetters[item]} style={styles.image}resizeMode='cover'/>
           </ImageBackground>         
         </View>}
-        numColumns={WordLenght}
+        numColumns={7}
       />
       <FlatList
         keyExtractor={(item, index) => index.toString()}
@@ -97,7 +97,7 @@ const GameScreen = (props)=>{
             </TouchableOpacity>
           </View>
         )}
-        numColumns={5}
+        numColumns={7}
       />
     </View>
   );
