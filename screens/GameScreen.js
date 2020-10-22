@@ -70,7 +70,6 @@ const GameScreen = (props)=>{
     <View style={styles.container}>
       <Image source={ImgTeddy[wrong]}style={styles.Teddy} resizeMode='cover'/>   
       <Text>{secret}</Text>
-      <Text>{right}</Text>
       <StatusBar style="auto" />
       <FlatList
         keyExtractor={(item, index) => index.toString()}  
