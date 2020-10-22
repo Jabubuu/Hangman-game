@@ -17,14 +17,15 @@ const StartScreen = (props) => {
 
 return (
     <View>
+        <Text style={styles.title}>Hangman</Text>
         <Row>
             <View>
-                <Text style={styles.text}>New Game</Text>
+                <Text style={styles.textBlack}>New Game</Text>
                 <Button text="Start" onPress={() => props.onStartGame()} />
             </View>
             <View>
-                <Text style={styles.text}>Add words</Text>
-                <Button text="Add Words" onPress={() => props.onNewWord()} />
+                <Text style={styles.textBlack}>Add words</Text>
+                <Button text="Add" onPress={() => props.onNewWord()} />
             </View>
         </Row>
     </View> 

@@ -30,6 +30,7 @@ const GameScreen = (props)=>{
   const winState=()=>{
     if (compare(Word, secret) == true){
       props.stopGame();
+      props.winGame();
       setGame(true);
     }
   }
@@ -56,11 +57,8 @@ const GameScreen = (props)=>{
     else{
       setWrong(wrong + 1);
     }
-
-    LetterList[index].pic = require('../assets/favicon.png');
-
+    LetterList[index].pic = require('../assets/Wrong.png');
     setTrycount(trycount + 1);
-
     winState();
     loseState();
   }
@@ -70,7 +68,6 @@ const GameScreen = (props)=>{
     <View style={styles.container}>
       <Image source={ImgTeddy[wrong]}style={styles.Teddy} resizeMode='cover'/>   
       <Text>{secret}</Text>
-      <Text>{right}</Text>
       <StatusBar style="auto" />
       <FlatList
         keyExtractor={(item, index) => index.toString()}  
