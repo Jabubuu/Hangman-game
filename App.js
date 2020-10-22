@@ -7,6 +7,7 @@ import GameScreen from './screens/GameScreen';
 import EndScreen from './screens/EndScreen';
 import AddScreen from './screens/AddScreen';
 import WinScreen from './screens/WinScreen';
+import {fetchData} from './components/REST'
 
 export default function App() {
 
@@ -17,41 +18,28 @@ export default function App() {
   const[addWordScreen, setAddWordScreen]=useState(false);
   const[winScreen, setWinScreen]=useState(false)
   const[words, setWords]=useState([]);
-  const uri = "https://hangman-291306.appspot.com/rest/hmanservice/getAll";
 
-  const fetchData = async () => {
-    let res = null;
-    try {
-      res=await fetch(uri);
-    }
-    catch(error){
-      setErrors(true);
-      console.log(error);
-    }
-    try {
-      const response = await res.json();
-      setWords(response);
-    }
-    catch(err){
-      setErrors(true);
-      console.log(error);
-    }
-  }
+  const[Arvaus, setArvaus]=useState('');
 
   if(words.length == 0 || words == null) {
-    fetchData();
-    console.log(words);
+    getData();
+  }
+
+  async function getData() {
+    const data = await fetchData();
+    setWords(data);
   }
   
   const startGame=()=>{
-    fetchData();
+    getData();
     setShouldGameStop(false);
     setNewGame(true);
     setWinScreen(false);
   }
   
-  const stopGame=()=>{
+  const stopGame=(secret)=>{
     setShouldGameStop(true);
+    setArvaus(secret);
   }
 
   const winGame=()=>{
@@ -64,6 +52,7 @@ export default function App() {
     setNewGame(false);
     setAddWordScreen(false);
     setWinScreen(false);
+    getData();
   }
 
   const startAddWord=()=>{
@@ -72,10 +61,10 @@ export default function App() {
 
   let content=<StartScreen onStartGame={startGame} onNewWord={startAddWord}/>;
   if (newGame == true){
-    content=<GameScreen stopGame={stopGame} exitGame={onExit} winGame={winGame} onStartGame={startGame} wordList={words}/>;
+    content=<GameScreen stopGame={stopGame} winGame={winGame} wordList={words}/>;
   }
   if (shouldGameStop==true){
-    content=<EndScreen newGame={startGame} exitGame={onExit}/>;
+    content=<EndScreen newGame={startGame} exitGame={onExit} SecretWord={Arvaus}/>;
   }
   if (addWordScreen == true) {
     content=<AddScreen wordExit={onExit} />;

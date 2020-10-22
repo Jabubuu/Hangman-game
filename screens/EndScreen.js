@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import Button from '../components/Button';
 import styles from '../styles/ScreenStyles';
 import Row from '../components/Row';
+import{ImgTeddy} from '../assets/ImageIndex';
 
 const EndScreen = (props)=>{
 
@@ -10,8 +11,10 @@ const EndScreen = (props)=>{
 
     return (
         
-        <View style={styles.screen}>
-        <Text style={styles.text}>Game Over</Text>
+        <View style={styles.container}>
+        <Image source={ImgTeddy[6]}style={styles.Teddy} resizeMode='cover'/>   
+        <Text style={styles.textBlack}>Game Over</Text>
+        <Text style={styles.textBlack}> Correct word was: {props.SecretWord}</Text>
         <View>
         <Row>
             <View>

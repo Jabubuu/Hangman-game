@@ -1,11 +1,13 @@
 
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
 
 import Button from '../components/Button';
 import styles from '../styles/ScreenStyles';
 import Row from '../components/Row';
+
+import{ImgTeddy} from '../assets/ImageIndex';
 
 
 const StartScreen = (props) => {
@@ -17,8 +19,9 @@ const StartScreen = (props) => {
     }
 
 return (
-    <View>
+    <View style={styles.container}>
         <Text style={styles.title}>Hangman</Text>
+        <Image source={ImgTeddy[6]}style={styles.Teddy} resizeMode='cover'/>
         <Row>
             <View>
                 <Text style={styles.textBlack}>New Game</Text>

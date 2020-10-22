@@ -36,7 +36,7 @@ const GameScreen = (props)=>{
 
   const loseState=()=>{
     if (wrong == 6){
-      props.stopGame();
+      props.stopGame(secret);
       setGame(true);
     }
   }
@@ -70,7 +70,6 @@ const GameScreen = (props)=>{
     <View style={styles.container}>
       <Image source={ImgTeddy[wrong]}style={styles.Teddy} resizeMode='cover'/>   
       <Text>{secret}</Text>
-      <Text>{right}</Text>
       <StatusBar style="auto" />
       <FlatList
         keyExtractor={(item, index) => index.toString()}  
@@ -81,7 +80,7 @@ const GameScreen = (props)=>{
               <Image source={ImgLetters[item]} style={styles.image}resizeMode='cover'/>
           </ImageBackground>         
         </View>}
-        numColumns={WordLenght}
+        numColumns={7}
       />
       <FlatList
         keyExtractor={(item, index) => index.toString()}
@@ -98,7 +97,7 @@ const GameScreen = (props)=>{
             </TouchableOpacity>
           </View>
         )}
-        numColumns={5}
+        numColumns={7}
       />
     </View>
   );
