@@ -10,6 +10,8 @@ const WinScreen = (props)=>{
         
         <View style={styles.screen}>
             <Text style={styles.title}>You Won</Text>
+            <Text style={styles.textBlack}> Nice! you guessed right!</Text>
+            <Text style={styles.textBlack}> It was: {props.SecretWord}</Text>
             <View>
                 <Row>
                     <View>
