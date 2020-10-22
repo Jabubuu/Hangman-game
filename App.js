@@ -42,9 +42,10 @@ export default function App() {
     setArvaus(secret);
   }
 
-  const winGame=()=>{
+  const winGame=(secret)=>{
     setShouldGameStop(true);
     setWinScreen(true);
+    setArvaus(secret);
   }
 
   const onExit=()=>{
@@ -70,7 +71,7 @@ export default function App() {
     content=<AddScreen wordExit={onExit} />;
   }
   if (winScreen == true) {
-    content=<WinScreen newGame={startGame} exitGame={onExit}/>;
+    content=<WinScreen newGame={startGame} exitGame={onExit} SecretWord={Arvaus}/>;
   }
   
   return (

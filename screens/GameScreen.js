@@ -29,7 +29,7 @@ const GameScreen = (props)=>{
 
   const winState=()=>{
     if (compare(Word, secret) == true){
-      props.winGame();
+      props.winGame(secret);
       setGame(true);
     }
   }

@@ -21,7 +21,7 @@ const StartScreen = (props) => {
 return (
     <View style={styles.container}>
         <Text style={styles.title}>Hangman</Text>
-        <Image source={ImgTeddy[6]}style={styles.Teddy} resizeMode='cover'/>
+        <Image source={require('../assets/cimteddy.png')}style={styles.Teddy} resizeMode='cover'/>
         <Row>
             <View>
                 <Text style={styles.textBlack}>New Game</Text>
