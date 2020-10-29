@@ -4,4 +4,4 @@ RUN mkdir -p /node
 ADD . /node
 WORKDIR /node
 RUN npm install
-CMD ["node", "server.js"]
+RUN npm start
