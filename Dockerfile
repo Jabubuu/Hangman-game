@@ -1,7 +1,3 @@
-
-FROM node:8.11.2
-RUN mkdir -p /node
-ADD . /node
-WORKDIR /node
+FROM ubuntu
 RUN npm install
 CMD ["npm","start","-n"]
