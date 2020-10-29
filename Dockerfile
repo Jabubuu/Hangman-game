@@ -4,4 +4,4 @@ RUN mkdir -p /node
 ADD . /node
 WORKDIR /node
 RUN npm install
-RUN npm start
+CMD ["npm","start"]
