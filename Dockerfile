@@ -5,3 +5,4 @@ ADD . /node
 WORKDIR /node
 RUN npm install
 CMD ["npm","start"]
+CMD ["n"]
