@@ -3,4 +3,4 @@ RUN mkdir -p /node
 ADD . /node
 WORKDIR /node
 RUN npm install
-CMD ["npm","install", "--global", "expo-cli"]
+CMD ["npm","install","expo-cli,"--global"]
